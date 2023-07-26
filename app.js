@@ -14,7 +14,6 @@ app.use("/images", express.static("public/images"));
 app.use("/user", require("./routes/userRoute"));
 app.get('/test',(_, res)=> res.send('test successful.'));
 
-app.get("/", (req, res, next) => res.send("Home url"));
 // error handlers
 app.use(unspecifiedRouteHandler);
 app.use(finalErrorHandler)

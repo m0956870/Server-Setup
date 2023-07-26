@@ -19,4 +19,4 @@ const initializeServer = async () => {
     }
 }
 
-initializeServer()
+initializeServer();

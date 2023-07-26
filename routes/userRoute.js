@@ -1,9 +1,6 @@
 const userRouter = require("express").Router();
 const { userAuth } = require("../middlewares");
-const { loginUser, signupUser, forgetPassword, resetPassword,
-    getAllUsers, getUser, getProfileDetails,
-    updateProfile, updateProfileImage,
-    deleteUser, deleteAllUsers, } = require("../controllers/user");
+const { loginUser, signupUser, forgetPassword, resetPassword, getAllUsers, getUser, getProfileDetails, updateProfile, updateProfileImage, deleteUser, deleteAllUsers, } = require("../controllers/user");
 
 // get
 userRouter.get("/all", getAllUsers);
