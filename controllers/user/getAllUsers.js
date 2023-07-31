@@ -12,7 +12,7 @@ const getAllUsers = async (req, res, next) => {
         if (email) findConditions.email = { $regex: new RegExp(email, "i") }
         if (phone) findConditions.phone_number = { $regex: new RegExp(phone, "i") }
 
-        let allUsersCount = await User.countDocuments({ is_delete: false });
+        let allUsersCount = await User.countDocuments(findConditions);
         if (allUsersCount === 0) return res.status(200).json({ status: true, message: "No users found!" });
 
         let users = await User.find(findConditions)

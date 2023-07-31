@@ -7,6 +7,8 @@ const loginUser = async (req, res, next) => {
     // console.log("loginUser", req.body)
     try {
         let { email, password } = req.body
+        if (!email) throw new ApiError("Email is required!", 400);
+        if (!password) throw new ApiError("Password is required!", 400);
 
         let user = await User.findOne({ email })
         if (!user) throw new ApiError("User does not exist!", 404)

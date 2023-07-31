@@ -9,7 +9,7 @@ const userAuth = async (req, res, next) => {
         const token = header.split(" ")[1];
         if (!token || token == "undefined") throw new ApiError("Token is required!", 401);
         
-        let verifiedUser = verifyJWT(token)
+        const verifiedUser = verifyJWT(token)
         const user = await User.findById(verifiedUser.id)
         if(!user) throw new ApiError("User not found!", 404)
         req.user = user
