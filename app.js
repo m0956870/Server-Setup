@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 app.use("/images", express.static("public/images"));
 
 // web urls
-app.use("/user", require("./routes/userRoute"));
+app.use("/users", require("./routes/userRoute"));
 app.get('/test',(_, res)=> res.send('test successful.'));
 
 // error handlers

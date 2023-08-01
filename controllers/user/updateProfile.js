@@ -30,9 +30,9 @@ const upload = multer({
 
 const updateProfile = async (req, res, next) => {
     // console.log("updateProfile")
-    try {
-        upload(req, res, async (error) => {
-            if (error) throw new ApiError("Multer error!", 400);
+    upload(req, res, async (error) => {
+        try {
+            if (error) return next(error);
 
             const { id } = req.body;
             if (!id) throw new ApiError("User ID is required", 400);
@@ -52,10 +52,10 @@ const updateProfile = async (req, res, next) => {
             await user.save();
             deleteImageHandler(oldImage);
             res.status(200).json({ status: true, message: "User details updated successfully!", data: user });
-        })
-    } catch (error) {
-        next(error);
-    }
+        } catch (error) {
+            next(error);
+        }
+    })
 }
 
 function deleteImageHandler(image) {
